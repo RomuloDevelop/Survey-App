@@ -1,0 +1,7 @@
+{
+  "name": "LiveGpsSurvey",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

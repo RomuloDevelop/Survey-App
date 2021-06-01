@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "LiveGpsSurvey",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
