@@ -1,0 +1,23 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-subtitle color="dark">{{title}}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+      <input type="file" hidden (click)="clickFile()" (change)="onSelectFile($event)" #installImg/>
+      <ion-button *ngIf="file == null else fileSelected" fill="outline" (click)="getInstallImg()">
+        <ion-icon slot="start" name="file-tray-full-outline"></ion-icon>
+        Añadir archivo
+      </ion-button>
+      <ng-template #fileSelected>
+        <div>
+          <span>{{file.name}} - {{file.size}}</span>
+          <div class="close-file">
+            <ion-button fill="clear" size="small" (click)="file = null">
+              <ion-icon slot="start" name="trash-outline"></ion-icon>
+              Borrar
+            </ion-button>
+          </div>
+        </div>
+      </ng-template>
+  </ion-card-content>
+</ion-card>

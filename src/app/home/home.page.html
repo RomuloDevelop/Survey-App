@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Inbox
+      LiveGps Telemetria
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,12 +14,159 @@
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">
-        Inbox
+        LiveGps Telemetria
       </ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-list>
-    <app-message *ngFor="let message of getMessages()" [message]="message"></app-message>
-  </ion-list>
+  <div [formGroup]="survey">
+    <h2 style="margin-left: 15px; margin-bottom: 15px;">Encuesta</h2>
+
+    <!-- <p>
+      Form Status: {{ survey.status }}
+      Form Value: {{ survey.value | json }}
+    </p> -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle color="dark">FECHA DE INSTALACION</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item class="testback">
+          <ion-label position="floating">Fecha</ion-label>
+          <ion-datetime formControlName="installDate" displayFormat="DD/MM/YYYY" placeholder="DD/MM/YYYY"></ion-datetime>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle color="dark">LUGAR DE INSTALACIÓN (CIUDAD/DIRECCION/DEPENDENCIAS) *</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-select formControlName="installPlace" placeholder="Elije">
+            <ion-select-option value="RANCAGUA">RANCAGUA</ion-select-option>
+            <ion-select-option value="SANTIAGO">SANTIAGO</ion-select-option>
+            <ion-select-option value="LA NEGRA">LA NEGRA</ion-select-option>
+            <ion-select-option value="OTROS">OTROS</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle color="dark">TIPO DE CONEXIÓN</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-radio-group formControlName="conectionType" value="">
+          <ion-item lines="none">
+            <ion-label>ARNES IND</ion-label>
+            <ion-radio slot="start" value="ARNES IND"></ion-radio>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-label>ARNES IND2</ion-label>
+            <ion-radio slot="start" value="ARNES IND2"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle color="dark">PATENTE VEHICULO</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-input placeholder="Tu respuesta" formControlName="vehiclePatent"></ion-input>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle color="dark">Nº INTERNO *</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-input placeholder="Tu respuesta" formControlName="internNro"></ion-input>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle color="dark">MODELO DE VEHICULO</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-select placeholder="Elije" formControlName="vehicleModel">
+            <ion-select-option value="BUS">BUS</ion-select-option>
+            <ion-select-option value="CAMION">CAMION</ion-select-option>
+            <ion-select-option value="TRACTO">TRACTO</ion-select-option>
+            <ion-select-option value="VEHICULO LIVIANO">VEHICULO LIVIANO</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle color="dark">MARCA DEL VEHICULO</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-select placeholder="Elije" formControlName="vehicleBrand">
+            <ion-select-option value="MERCEDES BENZ">MERCEDES BENZ</ion-select-option>
+            <ion-select-option value="VOLVO">VOLVO</ion-select-option>
+            <ion-select-option value="SCANIA">SCANIA</ion-select-option>
+            <ion-select-option value="FREIGHTLINER">FREIGHTLINER</ion-select-option>
+            <ion-select-option value="HYUNDAY">HYUNDAY</ion-select-option>
+            <ion-select-option value="TOYOTA">TOYOTA</ion-select-option>
+            <ion-select-option value="VOLKSWAGEN">VOLKSWAGEN</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle color="dark">NOMBRE DEL TÉCNICO</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-select placeholder="Elije" formControlName="technicianName">
+            <ion-select-option value="ANDRES ESPINA">ANDRES ESPINA</ion-select-option>
+            <ion-select-option value="GUILLERMO ESPINA">GUILLERMO ESPINA</ion-select-option>
+            <ion-select-option value="ALI SIMANCAS">ALI SIMANCAS</ion-select-option>
+            <ion-select-option value="JOSE LUIS NARVAEZ">JOSE LUIS NARVAEZ</ion-select-option>
+            <ion-select-option value="Opción 5">Opción 5</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle color="dark">Producto instalado</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <div formGroupName="installedProduct">
+          <div formArrayName="checks">
+            <ion-item lines="none" *ngFor="let entry of checks.controls; let i=index">
+              <ion-label>{{checkList[i]}}</ion-label>
+              <ion-checkbox slot="end" [formControlName]="i"></ion-checkbox>
+            </ion-item>
+          </div>
+          <ion-item *ngIf="checks.controls[checks.controls.length - 1].value">
+            <ion-input placeholder="Tu respuesta" formControlName="other"></ion-input>
+          </ion-item>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <ng-container *ngFor="let item of inputFileList">
+      <app-upload-image [title]="item.title"></app-upload-image>
+    </ng-container>
+  </div>
 </ion-content>
