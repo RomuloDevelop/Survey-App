@@ -20,7 +20,7 @@
   </ion-header>
 
   <div [formGroup]="survey">
-    <h2 style="margin-left: 15px; margin-bottom: 15px;">Encuesta</h2>
+    <h2 style="margin-left: 20px; margin-bottom: 20px;">Encuesta</h2>
 
     <!-- <p>
       Form Status: {{ survey.status }}
@@ -149,7 +149,7 @@
 
     <ion-card>
       <ion-card-header>
-        <ion-card-subtitle color="dark">Producto instalado</ion-card-subtitle>
+        <ion-card-subtitle color="dark">PRODUCTO INSTALADO</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
         <div formGroupName="installedProduct">
@@ -165,8 +165,23 @@
         </div>
       </ion-card-content>
     </ion-card>
+
     <ng-container *ngFor="let item of inputFileList">
       <app-upload-image [title]="item.title"></app-upload-image>
     </ng-container>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle color="dark">RESPONSABLE WIT</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-select placeholder="Elije" formControlName="responsable">
+            <ion-select-option value="DANNY RUIZ">DANNY RUIZ</ion-select-option>
+            <ion-select-option value="EURO PAZ">EURO PAZ</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>
